@@ -152,6 +152,82 @@ Your README should include:
 - Manual test cases (Session 6: at least 3)
 - A screenshot of the UI (Session 6)
 
+### Step 5: Submit your homework with Git
+
+After finishing your homework, you need to save and push your changes to GitHub.
+
+#### First time setup (only once)
+
+If you cloned the repo, Git is already set up. Skip to "Save and push."
+
+If you started fresh, set up Git first:
+
+```bash
+git init
+git remote add origin https://github.com/trungpro5398/toutorial_Hunter.git
+```
+
+#### Save and push your changes
+
+Every time you finish working on homework or want to save progress:
+
+```bash
+# 1. Check what files you changed
+git status
+
+# 2. Stage your changes (add the files you want to save)
+git add .
+
+# 3. Create a commit with a message describing what you did
+git commit -m "Session 6: finish todo app homework"
+
+# 4. Push to GitHub
+git push
+```
+
+#### Example: full workflow after finishing Session 6 homework
+
+```bash
+cd toutorial_Hunter
+
+# Check what changed
+git status
+
+# Stage everything
+git add .
+
+# Commit with a clear message
+git commit -m "Session 6: complete todo app with add, delete, validation"
+
+# Push to GitHub
+git push
+```
+
+#### Tips
+
+- Run `git status` before committing to see exactly what will be saved
+- Write clear commit messages so you can find your work later
+- You can push multiple times — each push updates GitHub with your latest changes
+- If you only want to stage specific files instead of everything:
+
+```bash
+# Stage specific files only
+git add "Session 6/my-todo-app/src/App.jsx"
+git add "Session 6/my-todo-app/README.md"
+```
+
+#### Common Git commands cheat sheet
+
+| Command | What it does |
+|---------|-------------|
+| `git status` | Show which files changed |
+| `git add .` | Stage all changes |
+| `git add <file>` | Stage one specific file |
+| `git commit -m "message"` | Save staged changes with a description |
+| `git push` | Upload commits to GitHub |
+| `git pull` | Download latest changes from GitHub |
+| `git log --oneline` | See commit history |
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or newer)
