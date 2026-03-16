@@ -53,6 +53,15 @@ git config --global user.email "your.email@example.com"
 
 Use the same email you will use for GitHub.
 
+To verify your config is saved:
+
+```bash
+git config --global user.name
+git config --global user.email
+```
+
+Both should print the values you just set.
+
 ---
 
 ## Part 2: Create a GitHub Account
@@ -100,7 +109,13 @@ On Windows, open **Command Prompt**, **PowerShell**, or **Git Bash**.
 ### Step 2: Navigate to where you want the project
 
 ```bash
-cd Desktop
+cd %USERPROFILE%\Desktop
+```
+
+This works in Command Prompt. In PowerShell, use:
+
+```bash
+cd ~\Desktop
 ```
 
 Or any folder you prefer.
@@ -152,6 +167,8 @@ Think of it like sending a package:
 3. **`git push`** = ship the box to GitHub
 
 ### Practice: Create a test file and push it
+
+> **Note:** This practice section pushes directly to `main` on purpose — just to learn the basic commands. After this, you will learn branches in Part 5 and should always use branches for real homework.
 
 #### Step 1: Create a file
 
@@ -291,14 +308,16 @@ This creates a new branch called `session6-hunter` and switches to it.
 
 Naming convention: `session<number>-<yourname>`
 
-Examples:
+Pick **one** based on which session you are working on:
 
 ```bash
-git checkout -b session2-hunter
-git checkout -b session3-hunter
-git checkout -b session4-hunter
-git checkout -b session6-hunter
+git checkout -b session2-hunter    # if working on Session 2
+git checkout -b session3-hunter    # if working on Session 3
+git checkout -b session4-hunter    # if working on Session 4
+git checkout -b session6-hunter    # if working on Session 6
 ```
+
+Only run **one** of these. Do not create all branches at once.
 
 #### Step 4: Verify you are on the new branch
 
