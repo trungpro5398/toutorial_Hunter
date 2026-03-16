@@ -11,6 +11,10 @@ Programming tutorial sessions covering JavaScript, TypeScript, React, data struc
 | **Session 4** | Module System + Algorithms | `import`/`export`, project structure, prefix sums, two pointers |
 | **Session 6** | React useState + Sliding Window | `useState`, controlled input, immutable updates, CRUD, sliding window algorithm |
 
+## New to Git?
+
+If this is your first time using Git, read **[GIT_SETUP_GUIDE.md](GIT_SETUP_GUIDE.md)** first. It covers everything from installing Git on Windows, creating a GitHub account, cloning the project, to creating pull requests with branches.
+
 ## Getting Started
 
 ### 1. Clone the repository
