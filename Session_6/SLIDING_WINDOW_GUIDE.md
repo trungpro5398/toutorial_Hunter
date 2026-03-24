@@ -79,7 +79,7 @@ Examples:
 
 The size changes depending on a condition.
 
-Examples:
+Examples: 
 
 - longest substring without repeating characters
 - smallest subarray with sum at least `target`
@@ -214,6 +214,24 @@ So move `left` forward and remove characters until the duplicate is gone.
 Then continue expanding.
 
 ### JavaScript Solution
+1,2,3,1,4,5,6
+left = 0
+
+best = 0
+
+index = 2
+seen [ 1,2,3]
+best = 2 - 0 + 1
+
+index = 3
+
+while 1 in set
+{
+  [2,3]
+  left = 1
+}
+[2,3,1]
+best = 3 - 1 + 1
 
 ```js
 function lengthOfLongestSubstring(text) {

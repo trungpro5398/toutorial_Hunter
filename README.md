@@ -10,6 +10,8 @@ Programming tutorial sessions covering JavaScript, TypeScript, React, data struc
 | **Session 3** | TypeScript Foundations | `type`, `interface`, union types, generics, `Promise<T>`, strict mode |
 | **Session 4** | Module System + Algorithms | `import`/`export`, project structure, prefix sums, two pointers |
 | **Session 6** | React useState + Sliding Window | `useState`, controlled input, immutable updates, CRUD, sliding window algorithm |
+| **Session 7** | Binary Search | `O(log n)` thinking, search invariants, classic binary search, answer-space binary search |
+| **Session 8** | React useEffect + Stack | `useEffect`, dependency arrays, cleanup, localStorage sync, stack, monotonic stack |
 
 ## New to Git?
 
@@ -32,7 +34,7 @@ cd toutorial_Hunter
 ### 3. Choose a session to work on
 
 ```bash
-cd "Session 2"   # or Session 3, Session 4, Session 6
+cd "Session 2"   # or Session 3, Session 4, Session 6, Session 7, Session 8
 ```
 
 ## How to Run Each Session
@@ -108,6 +110,44 @@ cd "Session 6"
 node sliding_window_examples.js
 ```
 
+### Session 7 — Binary Search
+
+#### Search Visualizer
+
+```bash
+cd "Session 7/search_demo"
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
+
+#### Binary Search Examples
+
+```bash
+cd "Session 7"
+node binary_search_examples.js
+```
+
+### Session 8 — React useEffect + Stack
+
+#### React Effect Demo
+
+```bash
+cd "Session 8/effect_demo"
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
+
+#### Stack Algorithm Examples
+
+```bash
+cd "Session 8"
+node stack_examples.js
+```
+
 ## How to Do Homework
 
 ### Step 1: Read the homework brief
@@ -122,6 +162,8 @@ Each session has a `HOMEWORK.md` file. Read it carefully — it lists all requir
 | **Session 3** | `hw1_migration_template.ts` | Convert 4 JS functions to TypeScript without using `any` |
 | **Session 4** | Create your own project | Refactor existing code into multiple files with `import`/`export` |
 | **Session 6** | Create a new React app | Build a Todo app from scratch with `useState` |
+| **Session 7** | Create one `.js` file + README | Solve one binary search problem and explain the invariants |
+| **Session 8** | Create a React app + one `.js` file | Build a `useEffect` app and solve one stack problem |
 
 ### Step 3: Check your work
 
@@ -144,11 +186,19 @@ cd your-todo-app
 npm install
 npm run dev
 # then open http://localhost:5173
+
+# Session 7 — run the binary search examples
+cd "Session 7"
+node binary_search_examples.js
+
+# Session 8 — run the stack examples
+cd "Session 8"
+node stack_examples.js
 ```
 
 ### Step 4: Write your README
 
-Sessions 4 and 6 require a `README.md` in your homework submission. Session 6 provides a template at `HOMEWORK_README_TEMPLATE.md`.
+Sessions 4, 6, 7, and 8 require a `README.md` in the homework submission. Sessions 6, 7, and 8 provide templates.
 
 Your README should include:
 - What the project does

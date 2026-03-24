@@ -238,6 +238,8 @@ A small Todo app with:
 For this lesson, keep the state small and explicit:
 
 ```js
+draft become "abc"
+setdraft("abc")
 const [draft, setDraft] = useState("");
 const [todos, setTodos] = useState([
   { id: 1, text: "Review immutable updates" },
@@ -280,7 +282,7 @@ A controlled input means:
 ### Standard Pattern
 
 ```jsx
-<input
+<input 
   value={draft}
   onChange={(event) => setDraft(event.target.value)}
 />
@@ -312,7 +314,7 @@ The correct mental model is:
 ## 4. Immutable State
 
 ### The Rule
-
+const a = 2
 Never mutate React state directly.
 
 For arrays, avoid mutating methods such as:
@@ -328,6 +330,12 @@ For arrays, avoid mutating methods such as:
 todos.push(newTodo);
 setTodos(todos);
 ```
+const a = [2,3]
+a.push(3)
+b = a
+b.push(3)
+
+
 
 Why this is wrong:
 
@@ -353,6 +361,12 @@ Say:
 
 > Mutation destroys your evidence. Immutable updates preserve the old state so you can reason about the change.
 
+this github work
+main branch
+build B function based on A
+you neva touch A
+spilit the main to branch B
+work all in branch B
 ## 5. Add Flow
 
 ### Teaching Goal

@@ -230,7 +230,7 @@ function renderBoard(width, height, snake, food) {
   for (let y = 0; y < height; y += 1) {
     lines.push(CH.BORDER + grid[y].join("") + CH.BORDER);
   }
-
+  
   lines.push(border);
   return lines.join("\n");
 }

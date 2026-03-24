@@ -1,0 +1,358 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  font-family: "IBM Plex Sans", "Avenir Next", sans-serif;
+  color: #142132;
+  background:
+    radial-gradient(circle at top left, rgba(255, 168, 76, 0.22), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(0, 146, 125, 0.16), transparent 28%),
+    linear-gradient(135deg, #f9f4ea 0%, #fff9f1 48%, #edf7f4 100%);
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --panel-bg: rgba(255, 255, 255, 0.82);
+  --panel-border: rgba(20, 33, 50, 0.1);
+  --panel-shadow: 0 22px 60px rgba(20, 33, 50, 0.13);
+  --ink: #142132;
+  --muted: #5c6474;
+  --accent-strong: #b45309;
+  --line: rgba(20, 33, 50, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+.lesson-shell {
+  width: min(1080px, calc(100% - 20px));
+  margin: 0 auto;
+  padding: 18px 0 28px;
+}
+
+.lesson-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 28px;
+  box-shadow: var(--panel-shadow);
+  backdrop-filter: blur(16px);
+  padding: 20px;
+}
+
+.eyebrow {
+  margin-bottom: 10px;
+  color: var(--accent-strong);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 14ch;
+  font-size: clamp(2rem, 5vw, 3.3rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  margin-top: 4px;
+  font-size: 1rem;
+}
+
+.intro,
+.contrast-copy,
+.output-copy,
+.screen-note,
+.status-copy,
+.effect-log li {
+  color: var(--muted);
+}
+
+.intro {
+  margin-top: 14px;
+  max-width: 58ch;
+}
+
+.rule-strip {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rule-strip span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(20, 33, 50, 0.06);
+  font-size: 0.9rem;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.contrast-panel {
+  margin-top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.lesson-row {
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.lesson-row-header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.step-badge {
+  min-width: 90px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(20, 33, 50, 0.08);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.comparison-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.demo-card {
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.demo-card-bad {
+  background: rgba(180, 60, 53, 0.05);
+}
+
+.demo-card-good {
+  background: rgba(15, 118, 110, 0.06);
+}
+
+.output-label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-strong);
+}
+
+.screen-box {
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.screen-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.screen-number {
+  margin-top: 8px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.screen-note {
+  margin-top: 10px;
+  font-size: 0.92rem;
+}
+
+.contrast-action {
+  margin-top: 12px;
+  border: 0;
+  border-radius: 14px;
+  padding: 11px 14px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.contrast-action:hover {
+  transform: translateY(-1px);
+}
+
+.contrast-action-bad {
+  background: linear-gradient(135deg, #d14d41 0%, #a12e28 100%);
+  box-shadow: 0 10px 20px rgba(161, 46, 40, 0.18);
+}
+
+.contrast-action-good {
+  background: linear-gradient(135deg, #159a76 0%, #0f766e 100%);
+  box-shadow: 0 10px 20px rgba(15, 118, 110, 0.18);
+}
+
+.output-copy {
+  margin-top: 12px;
+  font-size: 0.92rem;
+}
+
+.log-panel {
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.effect-log {
+  margin-top: 10px;
+  padding-left: 18px;
+}
+
+.takeaway {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(20, 33, 50, 0.06);
+  font-weight: 600;
+}
+
+.code-teaching {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.code-card {
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.lesson-code {
+  margin: 10px 0 0;
+  padding: 14px;
+  border-radius: 14px;
+  background: #17212c;
+  color: #dbeafe;
+  overflow-x: auto;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.summary-panel {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.status-card {
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.status-label {
+  font-size: 0.84rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.status-value {
+  margin-top: 8px;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.status-copy {
+  margin-top: 8px;
+  font-size: 0.92rem;
+}
+
+.state-preview {
+  margin: 0;
+  padding: 16px;
+  border-radius: 18px;
+  background: #17212c;
+  color: #dbeafe;
+  overflow-x: auto;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 820px) {
+  .code-teaching,
+  .comparison-grid,
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .lesson-shell {
+    width: min(100% - 14px, 1080px);
+    padding: 10px 0 20px;
+  }
+
+  .lesson-panel {
+    padding: 16px;
+  }
+
+  .lesson-row-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
