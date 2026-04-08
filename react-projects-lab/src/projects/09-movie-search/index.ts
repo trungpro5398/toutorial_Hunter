@@ -1,0 +1,1 @@
+export { MovieSearchPage } from "./MovieSearchPage";

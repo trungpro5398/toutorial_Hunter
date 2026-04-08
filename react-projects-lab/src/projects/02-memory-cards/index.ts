@@ -1,0 +1,1 @@
+export { MemoryCardsPage } from "./MemoryCardsPage";

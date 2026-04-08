@@ -1,0 +1,1 @@
+export { QuizArenaPage } from "./QuizArenaPage";

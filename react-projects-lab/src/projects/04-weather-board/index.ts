@@ -1,0 +1,1 @@
+export { WeatherBoardPage } from "./WeatherBoardPage";

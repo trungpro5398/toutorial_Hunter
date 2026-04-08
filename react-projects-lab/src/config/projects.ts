@@ -1,0 +1,98 @@
+import type { Project } from "../types/project";
+
+export const projects: Project[] = [
+  {
+    id: "01",
+    title: "Snake Game",
+    slug: "snake-game",
+    folder: "src/projects/01-snake-game",
+    status: "planned",
+    focus: "useState, useEffect, game loop",
+    description: "A blank Snake Game exercise for students to implement state and effects.",
+  },
+  {
+    id: "02",
+    title: "Memory Cards",
+    slug: "memory-cards",
+    folder: "src/projects/02-memory-cards",
+    status: "planned",
+    focus: "array state, derived state",
+    description: "Flip cards, find matching pairs, and count player moves.",
+  },
+  {
+    id: "03",
+    title: "Todo Planner",
+    slug: "todo-planner",
+    folder: "src/projects/03-todo-planner",
+    status: "planned",
+    focus: "forms, list updates",
+    description: "Manage tasks by status and priority.",
+  },
+  {
+    id: "04",
+    title: "Weather Board",
+    slug: "weather-board",
+    folder: "src/projects/04-weather-board",
+    status: "planned",
+    focus: "fetching, loading states",
+    description: "Search weather by city with loading and error states.",
+  },
+  {
+    id: "05",
+    title: "Expense Tracker",
+    slug: "expense-tracker",
+    folder: "src/projects/05-expense-tracker",
+    status: "planned",
+    focus: "number input, totals",
+    description: "Track income, expenses, and totals by transaction type.",
+  },
+  {
+    id: "06",
+    title: "Quiz Arena",
+    slug: "quiz-arena",
+    folder: "src/projects/06-quiz-arena",
+    status: "planned",
+    focus: "step state, scoring",
+    description: "Answer multiple quiz questions and view the final result.",
+  },
+  {
+    id: "07",
+    title: "Recipe Finder",
+    slug: "recipe-finder",
+    folder: "src/projects/07-recipe-finder",
+    status: "planned",
+    focus: "search, filtering",
+    description: "Find recipes by ingredient or recipe name.",
+  },
+  {
+    id: "08",
+    title: "Notes Board",
+    slug: "notes-board",
+    folder: "src/projects/08-notes-board",
+    status: "planned",
+    focus: "CRUD, localStorage",
+    description: "Create a short notes board with search and localStorage persistence.",
+  },
+  {
+    id: "09",
+    title: "Movie Search",
+    slug: "movie-search",
+    folder: "src/projects/09-movie-search",
+    status: "planned",
+    focus: "async search, detail route",
+    description: "Search for movies and open a detail view for each movie.",
+  },
+  {
+    id: "10",
+    title: "Pomodoro Focus",
+    slug: "pomodoro-focus",
+    folder: "src/projects/10-pomodoro-focus",
+    status: "planned",
+    focus: "timer, effect cleanup",
+    description: "Pomodoro timer with work sessions, breaks, and reset.",
+  },
+];
+
+export function getProjectBySlug(slug: string | undefined) {
+  return projects.find((project) => project.slug === slug);
+}

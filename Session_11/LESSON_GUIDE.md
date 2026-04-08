@@ -2,15 +2,15 @@
 
 ## Lesson Goal (75-90 minutes)
 
-| # | Topic | Time |
-|---|---|---|
-| 1 | Mindset: from linear data to hierarchical data | 10 minutes |
-| 2 | Tree vocabulary through real-world examples | 15 minutes |
-| 3 | Binary tree structure | 10 minutes |
-| 4 | DFS: preorder, inorder, postorder | 20 minutes |
-| 5 | BFS: level order with a queue | 15 minutes |
-| 6 | 3 easy example problems in class | 15 minutes |
-| 7 | Connect to the medium LeetCode homework | 5 minutes |
+| #   | Topic                                          | Time       |
+| --- | ---------------------------------------------- | ---------- |
+| 1   | Mindset: from linear data to hierarchical data | 10 minutes |
+| 2   | Tree vocabulary through real-world examples    | 15 minutes |
+| 3   | Binary tree structure                          | 10 minutes |
+| 4   | DFS: preorder, inorder, postorder              | 20 minutes |
+| 5   | BFS: level order with a queue                  | 15 minutes |
+| 6   | 3 easy example problems in class               | 15 minutes |
+| 7   | Connect to the medium LeetCode homework        | 5 minutes  |
 
 ---
 
@@ -259,10 +259,10 @@ Visual:
 
 ### Quick Comparison With Linked List
 
-| Structure | What does each node know? | Shape |
-|---|---|---|
-| Linked List | `next` | a straight line |
-| Tree | `left`, `right`, or children | branching |
+| Structure   | What does each node know?    | Shape           |
+| ----------- | ---------------------------- | --------------- |
+| Linked List | `next`                       | a straight line |
+| Tree        | `left`, `right`, or children | branching       |
 
 ---
 
