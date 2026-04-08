@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Session 10 Study List Demo",
+    "slug": "session-10-study-list-demo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "platforms": ["ios", "android", "web"]
+  }
+}

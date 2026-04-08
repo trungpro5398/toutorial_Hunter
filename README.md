@@ -12,6 +12,9 @@ Programming tutorial sessions covering JavaScript, TypeScript, React, data struc
 | **Session 6** | React useState + Sliding Window | `useState`, controlled input, immutable updates, CRUD, sliding window algorithm |
 | **Session 7** | Binary Search | `O(log n)` thinking, search invariants, classic binary search, answer-space binary search |
 | **Session 8** | React useEffect + Stack | `useEffect`, dependency arrays, cleanup, localStorage sync, stack, monotonic stack |
+| **Session 9** | React Native + Queue | Expo setup, View/Text/Pressable/TextInput, StyleSheet, Flexbox mobile, queue (FIFO) |
+| **Session 10** | React Native State + Linked List | `useState`, controlled input, conditional rendering, lists, linked list |
+| **Session 11** | Trees / Binary Trees | tree vocabulary, DFS, BFS, hierarchy thinking, common binary tree patterns |
 
 ## New to Git?
 
@@ -34,7 +37,7 @@ cd toutorial_Hunter
 ### 3. Choose a session to work on
 
 ```bash
-cd "Session 2"   # or Session 3, Session 4, Session 6, Session 7, Session 8
+cd "Session 2"   # or Session 3, Session 4, Session 6, Session 7, Session 8, Session_9, Session_10, Session_11
 ```
 
 ## How to Run Each Session
@@ -148,6 +151,52 @@ cd "Session 8"
 node stack_examples.js
 ```
 
+### Session 9 — React Native + Queue
+
+#### Greeting App Demo
+
+```bash
+cd "Session_9/greeting_demo"
+# Copy App.tsx into a new Expo project:
+npx create-expo-app@latest GreetingApp --template blank-typescript
+cp App.tsx GreetingApp/App.tsx
+cd GreetingApp
+npx expo start
+```
+
+Scan QR code with **Expo Go** app on your phone, or press `w` for web.
+
+#### Queue Algorithm Examples
+
+```bash
+cd "Session_9"
+node queue_examples.js
+```
+
+### Session 10 — React Native State + Linked List
+
+#### Study List Demo
+
+```bash
+cd "Session_10/study_list_demo"
+npm install
+npm start
+```
+
+#### Linked List Examples
+
+```bash
+cd "Session_10"
+node linked_list_examples.js
+```
+
+### Session 11 — Trees / Binary Trees
+
+```bash
+cd "Session_11"
+node tree_examples.js
+```
+
 ## How to Do Homework
 
 ### Step 1: Read the homework brief
@@ -164,6 +213,9 @@ Each session has a `HOMEWORK.md` file. Read it carefully — it lists all requir
 | **Session 6** | Create a new React app | Build a Todo app from scratch with `useState` |
 | **Session 7** | Create one `.js` file + README | Solve one binary search problem and explain the invariants |
 | **Session 8** | Create a React app + one `.js` file | Build a `useEffect` app and solve one stack problem |
+| **Session 9** | Create an Expo app + one `.js` file | Build a Greeting app with React Native and solve one queue problem |
+| **Session 10** | Create an Expo app + one `.js` file | Build a study list app and solve one linked list problem |
+| **Session 11** | Create 4 `.js` files + README | Solve 4 medium binary tree problems with traces |
 
 ### Step 3: Check your work
 
@@ -194,6 +246,14 @@ node binary_search_examples.js
 # Session 8 — run the stack examples
 cd "Session 8"
 node stack_examples.js
+
+# Session 10 — run the linked list examples
+cd "Session_10"
+node linked_list_examples.js
+
+# Session 11 — run the tree examples
+cd "Session_11"
+node tree_examples.js
 ```
 
 ### Step 4: Write your README

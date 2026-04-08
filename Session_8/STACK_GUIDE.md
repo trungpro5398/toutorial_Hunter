@@ -83,6 +83,8 @@ Teach these clues:
 
 Given a string containing `()[]{}`, return `true` if every opening bracket is correctly closed in order.
 
+"(([]{}" => false
+
 ### Real Connection
 
 This is how editors or parsers think about:
@@ -115,7 +117,8 @@ function isValidParentheses(s) {
       stack.push(char);
       continue;
     }
-
+    if stack is empty
+      return false
     const top = stack.pop();
 
     if (top !== pairs[char]) {
@@ -150,6 +153,10 @@ stack empty -> true
 
 For each day, find how many days you must wait until a warmer temperature. If no warmer day exists, answer is `0`.
 
+temperatures[stack[0]] >= temperatures[stack[1]] >= ...
+
+[6,5,4,1,3,2,1,5,4,3,2,1]
+
 ### Real Connection
 
 This pattern appears whenever we ask:
@@ -180,7 +187,7 @@ When the current temperature is warmer than the day on top of the stack:
 function dailyTemperatures(temperatures) {
   const answer = new Array(temperatures.length).fill(0);
   const stack = [];
-
+let temperatures =[6,5,4,1,3,2,1,5,4,3,2,1]
   for (let i = 0; i < temperatures.length; i += 1) {
     while (
       stack.length > 0 &&
@@ -188,9 +195,16 @@ function dailyTemperatures(temperatures) {
     ) {
       const previousIndex = stack.pop();
       answer[previousIndex] = i - previousIndex;
-    }
+      answer[3] = 4 - 3 = 1
+      answert[6] = 7 - 6 = 1
+      answer[5] = 7 - 5 = 2
+      answer[4] = 7 - 4 = 3
+      answer[2] = 7 - 2 = 5
 
+    }
     stack.push(i);
+    stack = [0,1,2,4,5,6]
+    stack [ 0,1]
   }
 
   return answer;
