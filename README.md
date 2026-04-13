@@ -15,6 +15,7 @@ Programming tutorial sessions covering JavaScript, TypeScript, React, data struc
 | **Session 9** | React Native + Queue | Expo setup, View/Text/Pressable/TextInput, StyleSheet, Flexbox mobile, queue (FIFO) |
 | **Session 10** | React Native State + Linked List | `useState`, controlled input, conditional rendering, lists, linked list |
 | **Session 11** | Trees / Binary Trees | tree vocabulary, DFS, BFS, hierarchy thinking, common binary tree patterns |
+| **Session 12** | Dynamic Programming | state design, memoization, tabulation, counting DP, optimization DP |
 
 ## New to Git?
 
@@ -37,7 +38,7 @@ cd toutorial_Hunter
 ### 3. Choose a session to work on
 
 ```bash
-cd "Session 2"   # or Session 3, Session 4, Session 6, Session 7, Session 8, Session_9, Session_10, Session_11
+cd "Session 2"   # or Session 3, Session 4, Session 6, Session 7, Session 8, Session_9, Session_10, Session_11, Session_12
 ```
 
 ## How to Run Each Session
@@ -197,6 +198,13 @@ cd "Session_11"
 node tree_examples.js
 ```
 
+### Session 12 — Dynamic Programming
+
+```bash
+cd "Session_12"
+node dp_examples.js
+```
+
 ## How to Do Homework
 
 ### Step 1: Read the homework brief
@@ -216,6 +224,7 @@ Each session has a `HOMEWORK.md` file. Read it carefully — it lists all requir
 | **Session 9** | Create an Expo app + one `.js` file | Build a Greeting app with React Native and solve one queue problem |
 | **Session 10** | Create an Expo app + one `.js` file | Build a study list app and solve one linked list problem |
 | **Session 11** | Create 4 `.js` files + README | Solve 4 medium binary tree problems with traces |
+| **Session 12** | Create 4 `.js` files + README | Solve 4 medium dynamic programming problems with traces |
 
 ### Step 3: Check your work
 
@@ -254,6 +263,10 @@ node linked_list_examples.js
 # Session 11 — run the tree examples
 cd "Session_11"
 node tree_examples.js
+
+# Session 12 — run the DP examples
+cd "Session_12"
+node dp_examples.js
 ```
 
 ### Step 4: Write your README

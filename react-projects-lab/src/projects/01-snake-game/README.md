@@ -39,3 +39,4 @@ This is a blank student exercise. The folder already has structure and function 
 - Put Snake-only styles in `styles/snakeGame.css`.
 - Keep shared tokens, app shell styles, project grid styles, and reusable requirement panel styles in `src/styles/global.css`.
 - If a selector starts with `snake-`, `game-`, `control-`, `metric-`, or belongs only to this exercise page, it should stay inside the Project 01 folder.
+
