@@ -29,6 +29,14 @@ export function twoSumBruteForce(
   // Convert the Session 2 `twoSumBruteForce` version to strict TypeScript.
   // Return the pair of indexes whose values sum to target.
   // If no pair exists, return -1.
+  for (let i = 0; i < nums.length - 1; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i]! + nums[j]! === target) {
+                return [i, j];
+            }
+        }
+    }
+  return -1;
   throw new Error("TODO: implement twoSumBruteForce");
 }
 
@@ -36,12 +44,20 @@ export function containsDuplicateWithSort(nums: number[]): boolean {
   // TODO:
   // Convert the Session 2 `containsDuplicateWithSort` version to strict TypeScript.
   // Keep the numeric sort comparator.
+  nums.sort();
+    for ( let i = 1; i < nums.length; i++) {
+        if (nums[i] == nums[i - 1]) {
+            return true;
+        }
+    }
+    return false
   throw new Error("TODO: implement containsDuplicateWithSort");
 }
 
 export function isAnagramWithSort(s: string, t: string): boolean {
   // TODO:
   // Convert the Session 2 `isAnagramWithSort` version to strict TypeScript.
+  return s.split("").sort().join("") == t.split("").sort().join("");
   throw new Error("TODO: implement isAnagramWithSort");
 }
 
@@ -50,6 +66,17 @@ export function maxProfit(prices: number[]): number {
   // Convert the Session 2 `maxProfit` version to strict TypeScript.
   // Return the maximum profit from one buy and one sell.
   // You must buy before you sell.
+  let buy: number = prices[0]!;
+    let profit = 0;
+    
+    for (let i = 1; i < prices.length; i++) {
+        if (prices[i]! < buy) {
+            buy = prices[i]!;
+        } else if (profit < prices[i]! - buy) {
+            profit = prices[i]! - buy;
+        }
+    }
+    return profit;
   throw new Error("TODO: implement maxProfit");
 }
 
@@ -62,3 +89,5 @@ export function maxProfit(prices: number[]): number {
  * - containsDuplicateWithSet
  * - isAnagramWithMap
  */
+
+
