@@ -49,56 +49,83 @@ function samePos(a, b) {
 }
 
 function getNextHead(head, dir, width, height, wrap) {
-  // TODO:
-  // Return the next head cell after moving one step.
-  // If wrap is true, crossing a border should move the head to the opposite side.
-  //
-  // Example:
-  // getNextHead({x:9,y:2}, {dx:1,dy:0}, 10, 6, true) -> {x:0,y:2}
-  throw new Error("TODO: implement getNextHead");
+  let nextX = head.x + dir.dx;
+  let nextY = head.y + dir.dy;
+
+  if (wrap) {
+    if (nextX < 0) nextX = width - 1;
+    else if (nextX >= width) nextX = 0;
+
+    if (nextY < 0) nextY = height - 1;
+    else if (nextY >= height) nextY = 0;
+  }
+
+  return { x: nextX, y: nextY };
 }
 
 function willHitBody(nextHead, snake, ateFood) {
-  // TODO:
-  // Return true if nextHead collides with the body.
-  // If ateFood is false, moving into the current tail cell is allowed
-  // because the tail will be removed this tick.
-  throw new Error("TODO: implement willHitBody");
+  const bodyToCheck = ateFood ? snake : snake.slice(0, snake.length - 1);
+  return bodyToCheck.some((segment) => samePos(segment, nextHead));
 }
 
 function moveSnake(snake, nextHead, ateFood) {
-  // TODO:
-  // Add nextHead to the front of the snake.
-  // If ateFood is false, remove the tail.
-  // If ateFood is true, keep the tail so the snake grows by 1.
-  throw new Error("TODO: implement moveSnake");
+  const nextSnake = [nextHead, ...snake];
+
+  if (!ateFood) {
+    nextSnake.pop();
+  }
+
+  return nextSnake;
 }
 
 function spawnFood(width, height, snake) {
-  // TODO:
-  // Return a random {x, y} cell that is not on the snake.
-  // A simple random retry loop is acceptable for this homework.
-  throw new Error("TODO: implement spawnFood");
+  if (snake.length >= width * height) {
+    throw new Error("Cannot spawn food: board is full.");
+  }
+
+  while (true) {
+    const candidate = {
+      x: Math.floor(Math.random() * width),
+      y: Math.floor(Math.random() * height),
+    };
+
+    if (!snake.some((segment) => samePos(segment, candidate))) {
+      return candidate;
+    }
+  }
 }
 
 function computeTickMs(score) {
-  // TODO:
-  // Start at 200ms.
-  // Every 2 points, reduce speed by 15ms.
-  // Do not go below 80ms.
-  throw new Error("TODO: implement computeTickMs");
+  const steps = Math.floor(score / SPEED.STEP_POINTS);
+  return Math.max(
+    SPEED.MIN_MS,
+    SPEED.START_MS - steps * SPEED.STEP_DECREASE_MS
+  );
 }
 
 function renderBoard(width, height, snake, food) {
-  // TODO:
-  // Return one multi-line string that renders the board.
-  // Use:
-  // - "." for empty
-  // - "*" for food
-  // - "@" for the head
-  // - "o" for the body
-  // - "#" for the border
-  throw new Error("TODO: implement renderBoard");
+  const grid = Array.from({ length: height }, () =>
+    Array.from({ length: width }, () => CH.EMPTY)
+  );
+
+  if (food) {
+    grid[food.y][food.x] = CH.FOOD;
+  }
+
+  for (let i = snake.length - 1; i >= 0; i -= 1) {
+    const segment = snake[i];
+    grid[segment.y][segment.x] = i === 0 ? CH.HEAD : CH.BODY;
+  }
+
+  const border = CH.BORDER.repeat(width + 2);
+  const lines = [border];
+
+  for (let y = 0; y < height; y += 1) {
+    lines.push(CH.BORDER + grid[y].join("") + CH.BORDER);
+  }
+
+  lines.push(border);
+  return lines.join("\n");
 }
 
 module.exports = {
