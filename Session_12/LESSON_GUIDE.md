@@ -58,6 +58,80 @@ By the end of the session, students should be able to:
 
 ---
 
+## Real-Work Connection: Why DP Matters Outside LeetCode
+
+Students often ask:
+
+> Do people actually use DP in real work?
+
+The honest answer is:
+
+- sometimes directly
+- very often indirectly
+
+DP-style thinking appears in real engineering whenever:
+
+- repeated computation should be cached
+- one expensive decision depends on smaller earlier decisions
+- the same state can be reached from multiple paths
+- cost, score, or count must be optimized
+
+### Real Engineering Examples
+
+#### 1. Cost Optimization
+
+Example:
+
+- choosing the cheapest way to compose a plan from smaller options
+- minimizing retries, API calls, or resource usage
+
+DP mental model:
+
+- define the state
+- define the cost of smaller states
+- build the cheapest larger state
+
+#### 2. Text And Document Processing
+
+Example:
+
+- edit distance in spelling suggestions
+- similarity scoring between two text versions
+- diff-like transformations
+
+DP mental model:
+
+- compare prefixes
+- reuse smaller prefix answers
+
+#### 3. Product Decision Flows
+
+Example:
+
+- best reward path
+- best pricing bundle
+- best configuration under constraints
+
+DP mental model:
+
+- every current choice affects future options
+- smaller optimal choices help build larger optimal choices
+
+#### 4. Performance Engineering
+
+Even when code is not written as textbook DP, engineers still use the same mindset:
+
+- cache repeated work
+- avoid recomputing expensive sub-results
+- reuse stable intermediate answers
+
+Teaching line:
+
+> DP is not only a coding interview topic.  
+> DP is structured reuse of previous work.
+
+---
+
 ## Part 1 — Opening Mindset: Why Recursion Alone Is Not Enough (10 minutes)
 
 Ask students:
@@ -75,10 +149,11 @@ Teaching line:
 Brute force idea:
 
 ```text
+
 fib(5) = fib(4) + fib(3)
 fib(4) = fib(3) + fib(2)
 ```
-
+fib[i] = fib[i-1] + fib[i-2]
 Students should notice:
 
 - `fib(3)` appears more than once
@@ -160,6 +235,18 @@ Examples:
 Teaching line:
 
 > Most DP mistakes happen before writing code. They happen when state or transition is unclear.
+
+### The Extra Question That Helps Students Most
+
+After defining the state, always ask:
+
+> If I already know all smaller states, how would I compute the current one in one sentence?
+
+Examples:
+
+- “To reach step `i`, I must come from `i - 1` or `i - 2`.”
+- “To rob house `i`, I either skip it or combine it with the best answer up to `i - 2`.”
+- “To convert two prefixes, I look at the final characters and the last edit operation.”
 
 ---
 
@@ -245,8 +332,12 @@ Problem idea:
 
 State:
 
-- `dp[i]` = number of ways to reach step `i`
-
+- `dp[i]` = number of ways to reach step `i` 
+to reach step n, you only have 2 choices for the last move
+1. come from step n - 1 by climbing 1 step
+2. come from step n - 2 by climbing 2 steps
+ways(n) = ways(n - 1) + ways(n - 2)
+`dp[i] = dp[i - 1] + dp[i - 2]`
 Transition:
 
 - `dp[i] = dp[i - 1] + dp[i - 2]`
@@ -259,6 +350,31 @@ Why it is good:
 
 - first clean DP recurrence
 - easiest place to teach state and base case
+
+How students should discover it:
+
+1. Focus on the last move only.
+2. Ask where step `i` can come from.
+3. Notice there are only two previous states.
+4. Turn that observation into a recurrence.
+
+Reference code:
+
+```js
+function climbStairs(n) {
+  if (n <= 2) return n;
+
+  const dp = new Array(n + 1).fill(0);
+  dp[1] = 1;
+  dp[2] = 2;
+
+  for (let step = 3; step <= n; step += 1) {
+    dp[step] = dp[step - 1] + dp[step - 2];
+  }
+
+  return dp[n];
+}
+```
 
 ---
 
@@ -286,6 +402,28 @@ Why it is good:
 
 - same shape as Climbing Stairs, but now the operation changes from counting to minimizing
 - helps students understand that DP is about state meaning, not memorizing one formula
+
+How students should discover it:
+
+1. Reuse the same “last move” thinking from Climbing Stairs.
+2. Change the question from “how many ways?” to “what is the cheapest way?”
+3. Notice the structure is similar, but the combine operation changes from `+` to `min`.
+
+Reference code:
+
+```js
+function minCostClimbingStairs(cost) {
+  const dp = new Array(cost.length + 1).fill(0);
+
+  for (let i = 2; i <= cost.length; i += 1) {
+    const oneStep = dp[i - 1] + cost[i - 1];
+    const twoSteps = dp[i - 2] + cost[i - 2];
+    dp[i] = Math.min(oneStep, twoSteps);
+  }
+
+  return dp[cost.length];
+}
+```
 
 ---
 
@@ -320,6 +458,32 @@ Why it is good:
 - introduces “choose / skip”
 - helps students move beyond counting DP
 
+How students should discover it:
+
+1. At each position, force the decision into 2 cases only.
+2. Write what happens if the current choice is taken.
+3. Write what happens if the current choice is skipped.
+4. Take the better answer.
+
+Reference code:
+
+```js
+function houseRobber(nums) {
+  if (nums.length === 0) return 0;
+  if (nums.length === 1) return nums[0];
+
+  const dp = new Array(nums.length).fill(0);
+  dp[0] = nums[0];
+  dp[1] = Math.max(nums[0], nums[1]);
+
+  for (let i = 2; i < nums.length; i += 1) {
+    dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+  }
+
+  return dp[nums.length - 1];
+}
+```
+
 ---
 
 ### Example 4: Edit Distance
@@ -348,6 +512,50 @@ Why it is good:
 - teaches students how to design a 2D state
 - teaches how to reduce a “big scary string problem” into prefix subproblems
 - this is one of the best problems for pushing students toward real DP maturity
+
+How students should discover it:
+
+1. Do not think about the whole strings first.
+2. Shrink the problem to prefixes.
+3. Ask what the last edit operation could be.
+4. Notice there are only 3 valid edit operations when characters differ.
+5. Convert those 3 operations into transitions.
+
+Reference code:
+
+```js
+function editDistance(word1, word2) {
+  const rows = word1.length + 1;
+  const cols = word2.length + 1;
+  const dp = Array.from({ length: rows }, () => new Array(cols).fill(0));
+
+  for (let row = 0; row < rows; row += 1) {
+    dp[row][0] = row;
+  }
+
+  for (let col = 0; col < cols; col += 1) {
+    dp[0][col] = col;
+  }
+
+  for (let row = 1; row < rows; row += 1) {
+    for (let col = 1; col < cols; col += 1) {
+      if (word1[row - 1] === word2[col - 1]) {
+        dp[row][col] = dp[row - 1][col - 1];
+      } else {
+        dp[row][col] =
+          1 +
+          Math.min(
+            dp[row][col - 1],
+            dp[row - 1][col],
+            dp[row - 1][col - 1]
+          );
+      }
+    }
+  }
+
+  return dp[word1.length][word2.length];
+}
+```
 
 ---
 
@@ -435,3 +643,7 @@ Then connect it to homework:
 
 - class examples teach counting, minimizing, choosing, and 2D state design
 - homework extends into sequence DP, grid DP, and stronger pattern recognition
+
+### Final Message To Repeat
+
+> If you can define the state clearly, the recurrence usually becomes much easier to see.

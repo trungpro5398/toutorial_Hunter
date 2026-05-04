@@ -16,6 +16,9 @@ Programming tutorial sessions covering JavaScript, TypeScript, React, data struc
 | **Session 10** | React Native State + Linked List | `useState`, controlled input, conditional rendering, lists, linked list |
 | **Session 11** | Trees / Binary Trees | tree vocabulary, DFS, BFS, hierarchy thinking, common binary tree patterns |
 | **Session 12** | Dynamic Programming | state design, memoization, tabulation, counting DP, optimization DP |
+| **Session 13** | Advanced Dynamic Programming | pattern recognition, knapsack DP, string DP, interval DP, space optimization |
+| **Session 14** | Backtracking Foundations | decision trees, choose/skip, loop expansion, permutations, duplicate handling |
+| **Session 15** | Backtracking Pruning | pruning, string partitioning, grid search, constraints, N-Queens |
 
 ## New to Git?
 
@@ -38,7 +41,7 @@ cd toutorial_Hunter
 ### 3. Choose a session to work on
 
 ```bash
-cd "Session 2"   # or Session 3, Session 4, Session 6, Session 7, Session 8, Session_9, Session_10, Session_11, Session_12
+cd "Session 2"   # or Session 3, Session 4, Session 6, Session 7, Session 8, Session_9, Session_10, Session_11, Session_12, Session_13, Session_14, Session_15
 ```
 
 ## How to Run Each Session
@@ -205,6 +208,27 @@ cd "Session_12"
 node dp_examples.js
 ```
 
+### Session 13 — Advanced Dynamic Programming
+
+```bash
+cd "Session_13"
+node advanced_dp_examples.js
+```
+
+### Session 14 — Backtracking Foundations
+
+```bash
+cd "Session_14"
+node backtracking_examples.js
+```
+
+### Session 15 — Backtracking Pruning
+
+```bash
+cd "Session_15"
+node backtracking_advanced_examples.js
+```
+
 ## How to Do Homework
 
 ### Step 1: Read the homework brief
@@ -225,6 +249,9 @@ Each session has a `HOMEWORK.md` file. Read it carefully — it lists all requir
 | **Session 10** | Create an Expo app + one `.js` file | Build a study list app and solve one linked list problem |
 | **Session 11** | Create 4 `.js` files + README | Solve 4 medium binary tree problems with traces |
 | **Session 12** | Create 4 `.js` files + README | Solve 4 medium dynamic programming problems with traces |
+| **Session 13** | Study guide + runnable examples | Learn stronger DP families before doing grouped practice |
+| **Session 14** | Study guide + runnable examples | Learn the basic shapes of backtracking |
+| **Session 15** | Study guide + runnable examples | Learn pruning, constraints, and stronger backtracking patterns |
 
 ### Step 3: Check your work
 
@@ -267,6 +294,18 @@ node tree_examples.js
 # Session 12 — run the DP examples
 cd "Session_12"
 node dp_examples.js
+
+# Session 13 — run the advanced DP examples
+cd "Session_13"
+node advanced_dp_examples.js
+
+# Session 14 — run the backtracking foundation examples
+cd "Session_14"
+node backtracking_examples.js
+
+# Session 15 — run the advanced backtracking examples
+cd "Session_15"
+node backtracking_advanced_examples.js
 ```
 
 ### Step 4: Write your README

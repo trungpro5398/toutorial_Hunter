@@ -1,3 +1,4 @@
+// Example 1 solution: 1D counting DP.
 function climbStairs(n) {
   if (n <= 2) return n;
 
@@ -12,6 +13,8 @@ function climbStairs(n) {
   return dp[n];
 }
 
+// Example 2 solution: same recurrence shape as Climbing Stairs,
+// but now the objective is minimization instead of counting.
 function minCostClimbingStairs(cost) {
   const dp = new Array(cost.length + 1).fill(0);
 
@@ -24,6 +27,8 @@ function minCostClimbingStairs(cost) {
   return dp[cost.length];
 }
 
+// Example 3 solution: decision DP where each index has two cases,
+// skip the current house or rob it.
 function houseRobber(nums) {
   if (nums.length === 0) return 0;
   if (nums.length === 1) return nums[0];
@@ -39,6 +44,9 @@ function houseRobber(nums) {
   return dp[nums.length - 1];
 }
 
+// Example 4 solution: classic 2D DP on prefixes.
+// dp[i][j] stores the minimum edits to convert
+// word1[0..i-1] into word2[0..j-1].
 function editDistance(word1, word2) {
   const rows = word1.length + 1;
   const cols = word2.length + 1;
