@@ -1,56 +1,137 @@
 import type { BoardCell, Direction, Position } from "../types/snake";
-
-function notImplemented(): never {
-  throw new Error("TODO: Students implement this Snake helper.");
-}
+import { INITIAL_SNAKE } from "../constants/gameConfig";
 
 export function createInitialSnake(): Position[] {
-  return notImplemented();
+  return INITIAL_SNAKE.map((segment) => ({
+    row: segment.row,
+    col: segment.col,
+  }));
 }
 
 export function createFoodPosition(
-  _snake: Position[],
-  _boardSize: number
+  snake: Position[],
+  boardSize: number
 ): Position {
-  return notImplemented();
+  if (snake.length >= boardSize * boardSize) {
+    return snake[0];
+  }
+
+  let food: Position = {
+    row: Math.floor(Math.random() * boardSize),
+    col: Math.floor(Math.random() * boardSize),
+  };
+
+  while (isPositionInSnake(food, snake)) {
+    food = {
+      row: Math.floor(Math.random() * boardSize),
+      col: Math.floor(Math.random() * boardSize),
+    };
+  }
+
+  return food;
 }
 
 export function getNextPosition(
-  _head: Position,
-  _direction: Direction
+  head: Position,
+  direction: Direction
 ): Position {
-  return notImplemented();
+  if (direction === "up") {
+    return {
+      row: head.row - 1,
+      col: head.col,
+    };
+  }
+
+  if (direction === "down") {
+    return {
+      row: head.row + 1,
+      col: head.col,
+    };
+  }
+
+  if (direction === "left") {
+    return {
+      row: head.row,
+      col: head.col - 1,
+    };
+  }
+
+  return {
+    row: head.row,
+    col: head.col + 1,
+  };
 }
 
-export function isSamePosition(_a: Position, _b: Position): boolean {
-  return notImplemented();
+export function isSamePosition(a: Position, b: Position): boolean {
+  return a.row === b.row && a.col === b.col;
 }
 
 export function isOppositeDirection(
-  _current: Direction,
-  _next: Direction
+  current: Direction,
+  next: Direction
 ): boolean {
-  return notImplemented();
+  return (
+    (current === "up" && next === "down") ||
+    (current === "down" && next === "up") ||
+    (current === "left" && next === "right") ||
+    (current === "right" && next === "left")
+  );
 }
 
 export function isOutsideBoard(
-  _position: Position,
-  _boardSize: number
+  position: Position,
+  boardSize: number
 ): boolean {
-  return notImplemented();
+  return (
+    position.row < 0 ||
+    position.row >= boardSize ||
+    position.col < 0 ||
+    position.col >= boardSize
+  );
 }
 
 export function isPositionInSnake(
-  _position: Position,
-  _snake: Position[]
+  position: Position,
+  snake: Position[]
 ): boolean {
-  return notImplemented();
+  return snake.some((segment) => isSamePosition(position, segment));
 }
 
 export function createBoardCells(
-  _boardSize: number,
-  _snake: Position[],
-  _food: Position
+  boardSize: number,
+  snake: Position[],
+  food: Position
 ): BoardCell[] {
-  return notImplemented();
+  const cells: BoardCell[] = [];
+
+  for (let row = 0; row < boardSize; row += 1) {
+    for (let col = 0; col < boardSize; col += 1) {
+      const position = { row, col };
+      const isHead = isSamePosition(position, snake[0]);
+      const isSnake = isPositionInSnake(position, snake);
+      const isFood = isSamePosition(position, food);
+
+      let state: BoardCell["state"] = "empty";
+
+      if (isFood) {
+        state = "food";
+      }
+
+      if (isSnake) {
+        state = "snake";
+      }
+
+      if (isHead) {
+        state = "snake-head";
+      }
+
+      cells.push({
+        id: `${row}-${col}`,
+        position,
+        state,
+      });
+    }
+  }
+
+  return cells;
 }
