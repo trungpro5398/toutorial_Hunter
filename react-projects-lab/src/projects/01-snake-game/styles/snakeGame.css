@@ -1,29 +1,60 @@
-.snake-board-preview {
+.snake-board {
   display: grid;
-  grid-template-columns: repeat(3, 34px);
+  gap: 3px;
+  width: min(72vw, 520px);
+  aspect-ratio: 1;
+  margin-top: 16px;
+}
+
+.snake-cell {
+  min-width: 0;
+  min-height: 0;
+  border-radius: 3px;
+  background: rgb(255 255 255 / 6%);
+  border: 1px solid rgb(255 255 255 / 8%);
+}
+
+.snake-cell.is-empty {
+  background: rgb(255 255 255 / 6%);
+}
+
+.snake-cell.is-snake {
+  background: var(--accent);
+}
+
+.snake-cell.is-snake-head {
+  background: white;
+}
+
+.snake-cell.is-food {
+  background: var(--danger);
+}
+
+.snake-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.snake-direction-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 70px);
   gap: 8px;
   margin-top: 16px;
 }
 
-.snake-preview-cell {
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgb(255 255 255 / 12%);
-  border-radius: 6px;
-  background: rgb(255 255 255 / 5%);
+.snake-direction-controls button:first-child {
+  grid-column: 2;
 }
 
-.snake-preview-cell.is-snake {
-  background: var(--accent);
+.snake-direction-controls button:nth-child(2) {
+  grid-column: 1;
 }
 
-.snake-preview-cell.is-food {
-  background: var(--danger);
+.snake-direction-controls button:nth-child(3) {
+  grid-column: 2;
 }
 
-.snake-control-preview {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 16px;
+.snake-direction-controls button:nth-child(4) {
+  grid-column: 3;
 }
