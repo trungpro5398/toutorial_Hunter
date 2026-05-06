@@ -7,7 +7,14 @@ export type Position = {
   col: number;
 };
 
-export type CellState = "empty" | "snake" | "snake-head" | "food";
+export type CellState =
+    "empty" |
+    "snake" |
+    "snake-head" |
+    "ai-snake" |
+    "ai-snake-head" |
+    "food"
+    ;
 
 export type BoardCell = {
   id: string;

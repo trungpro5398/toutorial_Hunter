@@ -1,5 +1,5 @@
 import type { BoardCell, Direction, Position } from "../types/snake";
-import { INITIAL_SNAKE } from "../constants/gameConfig";
+import { INITIAL_SNAKE, INITIAL_AI_SNAKE } from "../constants/gameConfig";
 
 /*
 function notImplemented(): never {
@@ -103,7 +103,8 @@ export function isPositionInSnake(
 export function createBoardCells(
   boardSize: number,
   snake: Position[],
-  food: Position
+  food: Position,
+  aiSnake: Position[] = []
 ): BoardCell[] {
   const cells: BoardCell[] = [];
 
@@ -113,6 +114,9 @@ export function createBoardCells(
       const isHead = isSamePosition(position, snake[0]);
       const isSnake = isPositionInSnake(position, snake);
       const isFood = isSamePosition(position, food);
+
+      const isAiHead = aiSnake.length > 0 && isSamePosition(position, aiSnake[0]);
+      const isAiSnake = isPositionInSnake(position, aiSnake);
 
       let state: BoardCell["state"] = "empty";
 
@@ -128,6 +132,15 @@ export function createBoardCells(
         state = "snake-head";
       }
 
+      // AI snake render implementation
+      if (isAiSnake) {
+        state = "ai-snake";
+      }
+
+      if (isAiHead) {
+        state = "ai-snake-head";
+      }
+
       cells.push({
         id: `${row}-${col}`,
         position,
@@ -137,4 +150,83 @@ export function createBoardCells(
   }
 
   return cells;
+<<<<<<< Updated upstream
+=======
+}
+
+// AI SNAKE CODE
+const DIRECTIONS: Direction[] = ["up", "down", "left", "right"];
+
+function positionKey(position: Position): string {
+  return `${position.row}-${position.col}`;
+}
+
+export function createInitialAiSnake(): Position[] {
+  return INITIAL_AI_SNAKE.map((segment) => ({
+    row: segment.row,
+    col: segment.col,
+  }));
+}
+
+// BFS FUNCTION
+export function findShortestPath(
+  start: Position,
+  target: Position,
+  blockedPositions: Position[],
+  boardSize: number
+): Position[] {
+  const queue: Position[] = [start];
+  const visited = new Set<string>([positionKey(start)]);
+
+  // Stored for backtracking and path saving
+  const previous = new Map<string, Position>();
+  const blocked = new Set(blockedPositions.map(positionKey));
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+
+    if (!current) {
+      break;
+    }
+
+    // BACKTRACKING to save the AI the shortest path from
+    if (isSamePosition(current, target)) {
+      const path: Position[] = [];
+      let step: Position | undefined = current;
+
+       // Reconstructs whole path until run out of previous positions or reach AI snake head
+      while (step && !isSamePosition(step, start)) {
+
+        // Adds in front of step array
+        path.unshift(step);
+        // positionKey - converts into string key e.g. { row: 5, col: 8 } -> "5-8"
+        // Iterates through pathing until no more
+        step = previous.get(positionKey(step));
+      }
+
+      return path;
+    }
+
+    for (const direction of DIRECTIONS) {
+      const next = getNextPosition(current, direction);
+      const key = positionKey(next);
+
+      if (
+        visited.has(key) ||
+        blocked.has(key) ||
+        isOutsideBoard(next, boardSize)
+      ) {
+        continue;
+      }
+
+      visited.add(key);
+
+      // I got to key from current
+      previous.set(key, current);
+      queue.push(next);
+    }
+  }
+
+  return [];
+>>>>>>> Stashed changes
 }

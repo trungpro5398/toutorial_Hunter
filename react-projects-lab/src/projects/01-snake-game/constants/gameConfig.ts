@@ -11,3 +11,13 @@ export const INITIAL_SNAKE: Position[] = [
   { row: 8, col: 5 },
   { row: 8, col: 4 },
 ];
+
+// How many ticks before AI snake moves
+export const AI_MOVE_INTERVAL = 5;
+
+// Later replace with random spawning
+export const INITIAL_AI_SNAKE: Position[] = [
+  { row: 2, col: 14 },
+  { row: 2, col: 15 },
+  { row: 2, col: 16 },
+];
