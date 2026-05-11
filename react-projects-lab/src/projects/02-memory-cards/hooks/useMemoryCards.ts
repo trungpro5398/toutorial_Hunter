@@ -107,5 +107,5 @@ export function useMemoryCards() {
         status,
         handleCardClick,
         resetGame
-        }
+    }
 }

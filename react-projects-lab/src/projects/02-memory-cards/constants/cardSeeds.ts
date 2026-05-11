@@ -26,7 +26,7 @@ export const cardSeeds: Omit<Card, "id">[] = [
       matchKey: "cowboy"
     },
 
-    /*
+  /*
     {
       emoji: "👓",
       matchKey: "glasses"
@@ -46,5 +46,5 @@ export const cardSeeds: Omit<Card, "id">[] = [
       emoji: "🐧",
       matchKey: "penguin"
     }
-    */
+  */
 ];
