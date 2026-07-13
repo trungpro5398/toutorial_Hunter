@@ -32,7 +32,7 @@ export function useTodos() {
         setTodos(currentTodos => currentTodos.map(
             todo =>  todo.id === id ? { ...todo, completed: !todo.completed } :  todo
             )
-        );z
+        );
     }
 
     function deleteTodo(id: string) {

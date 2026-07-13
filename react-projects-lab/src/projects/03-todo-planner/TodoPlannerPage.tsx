@@ -29,7 +29,6 @@ export function TodoPlannerPage() {
         </div>
       </div>
 
-      // Pass to child components
       <div className="starter-surface">
         <TodoForm addTodo={addTodo} />
         <TodoFilters filter={filter} setFilter={setFilter} />

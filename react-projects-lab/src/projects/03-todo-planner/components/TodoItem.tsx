@@ -3,6 +3,7 @@
  */
 
 import { useState } from "react";
+import { motion } from "motion/react";
 import type { Todo, Priority } from "../types/Todo";
 
 type TodoItemProps = {
@@ -48,7 +49,14 @@ export function TodoItem({ todo, toggleTodo, deleteTodo, editTodo }: TodoItemPro
   }
 
   return (
-    <li className="starter-item">
+    <motion.li
+      className="starter-item"
+      layout
+      initial={{ opacity: 0, y: 12, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, x: 24, scale: 0.96 }}
+      transition={{ duration: 0.18, ease: "easeOut" }}
+    >
       {isEditing ? (
         <div className="starter-stack">
           <input
@@ -95,29 +103,41 @@ export function TodoItem({ todo, toggleTodo, deleteTodo, editTodo }: TodoItemPro
         </div>
       ) : (
         <div className="starter-stack">
-          <input
-            type="checkbox"
-            checked={todo.completed}
-            onChange={() => toggleTodo(todo.id)}
-          />
+          <div className="todo-title-row">
+            <input
+              type="checkbox"
+              checked={todo.completed}
+              onChange={() => toggleTodo(todo.id)}
+            />
 
-          <span>{todo.title}</span>
+            <span className="todo-title">{todo.title}</span>
+          </div>
 
-          <span className="starter-chip">{todo.priority}</span>
+          <span className="starter-chip">{todo.priority.toUpperCase()}</span>
 
           {todo.hasDueDate && todo.dueDate && (
-            <span>{todo.dueDate}</span>
+            <span>Due Date: {todo.dueDate}</span>
           )}
 
-          <button type="button" onClick={() => setIsEditing(true)}>
-            Edit
-          </button>
+          <div className="todo-actions">
+            <button
+              className="button secondary"
+              type="button"
+              onClick={() => setIsEditing(true)}
+            >
+              Edit
+            </button>
 
-          <button type="button" onClick={() => deleteTodo(todo.id)}>
-            Delete
-          </button>
+            <button
+              className="button secondary"
+              type="button"
+              onClick={() => deleteTodo(todo.id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       )}
-    </li>
+    </motion.li>
   );
 }

@@ -22,7 +22,11 @@ export function TodoFilters({ filter, setFilter }: TodoFiltersProps) {
         filterOptions.map((option) => (
             <button
                 key={option.value}
-                className={option.value === filter ? "button" : "button secondary"}
+                className={
+                    option.value === filter
+                        ? "button filter-button-selected"
+                        : "button secondary"
+                }
                 type="button"
                 onClick={() => setFilter(option.value)}
             >

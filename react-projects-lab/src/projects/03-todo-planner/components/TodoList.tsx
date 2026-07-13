@@ -2,6 +2,7 @@
  * Renders the filtered list of todo items.
  */
 
+import { AnimatePresence } from "motion/react";
 import { TodoItem } from "./TodoItem";
 import type { Todo, Priority } from "../types/Todo";
 
@@ -29,15 +30,17 @@ export function TodoList({
             <p>No tasks to show.</p>
           ) : (
             <ul className="starter-list">
-              {todos.map((todo) => (
-                <TodoItem
-                  key={todo.id}
-                  todo={todo}
-                  toggleTodo={toggleTodo}
-                  deleteTodo={deleteTodo}
-                  editTodo={editTodo}
-                />
-              ))}
+              <AnimatePresence initial={false}>
+                {todos.map((todo) => (
+                  <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    toggleTodo={toggleTodo}
+                    deleteTodo={deleteTodo}
+                    editTodo={editTodo}
+                  />
+                ))}
+              </AnimatePresence>
             </ul>
           )}
     </section>
