@@ -1,11 +1,21 @@
+// Renders one actual card button
+
 type MemoryCardProps = {
-  label: string;
+  emoji: string;
+  isFaceUp: boolean;
+  isMatched: boolean;
+  onClick: () => void;
 };
 
-export function MemoryCard({ label }: MemoryCardProps) {
+export function MemoryCard({ onClick, isMatched, isFaceUp, emoji }: MemoryCardProps) {
   return (
-    <button className="starter-tile" type="button">
-      {label}
+    <button
+        className={isMatched ? "starter-tile matched" : "starter-tile"}
+        type="button"
+        onClick={onClick}
+        disabled={isMatched}
+    >
+      {isFaceUp ? emoji : "?"}
     </button>
   );
 }
