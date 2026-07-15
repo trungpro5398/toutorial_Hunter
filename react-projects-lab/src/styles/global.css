@@ -406,6 +406,90 @@ h1 {
   font-weight: 700;
 }
 
+.weather-validation {
+  margin: 0;
+  color: rgb(251 191 36);
+  font-size: 0.9rem;
+}
+
+.weather-state-content {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.weather-state-content p {
+  margin: 0;
+}
+
+.weather-status-chip {
+  border-color: rgb(148 163 184 / 42%);
+  color: rgb(203 213 225);
+}
+
+.weather-status-loading {
+  border-color: rgb(96 165 250 / 48%);
+  color: rgb(147 197 253);
+}
+
+.weather-status-success {
+  border-color: rgb(53 208 139 / 48%);
+  color: var(--accent-strong);
+}
+
+.weather-status-empty {
+  border-color: rgb(251 191 36 / 50%);
+  color: rgb(252 211 77);
+}
+
+.weather-status-error {
+  border-color: rgb(248 113 113 / 52%);
+  color: rgb(252 165 165);
+}
+
+.weather-result-panel {
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.weather-condition-sunny,
+.weather-condition-clear {
+  border-color: rgb(251 191 36 / 45%);
+  background: linear-gradient(135deg, rgb(19 33 40 / 84%), rgb(92 70 24 / 42%));
+}
+
+.weather-condition-cloudy,
+.weather-condition-foggy,
+.weather-condition-partly-cloudy {
+  border-color: rgb(148 163 184 / 45%);
+  background: linear-gradient(135deg, rgb(19 33 40 / 84%), rgb(60 72 82 / 36%));
+}
+
+.weather-condition-rainy,
+.weather-condition-drizzle {
+  border-color: rgb(96 165 250 / 45%);
+  background: linear-gradient(135deg, rgb(19 33 40 / 84%), rgb(30 64 105 / 38%));
+}
+
+.weather-condition-stormy {
+  border-color: rgb(192 132 252 / 48%);
+  background: linear-gradient(135deg, rgb(19 33 40 / 84%), rgb(76 29 149 / 35%));
+}
+
+.weather-condition-humid,
+.weather-condition-windy {
+  border-color: rgb(45 212 191 / 42%);
+  background: linear-gradient(135deg, rgb(19 33 40 / 84%), rgb(19 78 74 / 34%));
+}
+
+.secondary-button {
+  background: rgb(255 255 255 / 7%);
+  color: var(--text);
+}
+
+.secondary-button:hover {
+  background: rgb(255 255 255 / 11%);
+}
+
 .starter-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

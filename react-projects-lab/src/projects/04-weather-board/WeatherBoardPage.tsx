@@ -1,9 +1,26 @@
+/*
+    Connects custom hook to the three UI components.
+    Acts as bridge between WeatherSearch (rendering) and useWeatherSearch (actual code)
+*/
+
 import { Link } from "react-router-dom";
 import { WeatherResult } from "./components/WeatherResult";
 import { WeatherSearch } from "./components/WeatherSearch";
 import { WeatherStateMessage } from "./components/WeatherStateMessage";
+import { useWeatherSearch } from "./hooks/useWeatherSearch";
 
 export function WeatherBoardPage() {
+  const {
+    query,
+    setQuery,
+    status,
+    weather,
+    errorMessage,
+    validationMessage,
+    searchWeather,
+    clearWeather,
+  } = useWeatherSearch();
+
   return (
     <section className="exercise-page" aria-labelledby="weather-board-title">
       <Link className="back-link" to="/">
@@ -22,9 +39,15 @@ export function WeatherBoardPage() {
       </div>
 
       <div className="starter-surface">
-        <WeatherSearch />
-        <WeatherStateMessage />
-        <WeatherResult />
+        <WeatherSearch
+          query={query}
+          setQuery={setQuery}
+          searchWeather={searchWeather}
+          status={status}
+          validationMessage={validationMessage}
+        />
+        <WeatherStateMessage status={status} errorMessage={errorMessage} />
+        <WeatherResult weather={weather} clearWeather={clearWeather} />
       </div>
     </section>
   );
